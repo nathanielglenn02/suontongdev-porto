@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { FolderKanban, Code2, Eye } from "lucide-react";
 import { Project, Tech } from "@prisma/client";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   const projectCount = await prisma.project.count();
   const techCount = await prisma.tech.count();
