@@ -1,0 +1,35 @@
+import { NextResponse } from "next/server";
+import { writeFile, mkdir } from "fs/promises";
+import { join } from "path";
+
+export async function POST(request: Request) {
+  try {
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+
+    if (!file) {
+      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+    }
+
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    // Ensure public/uploads directory exists
+    const uploadsDir = join(process.cwd(), "public", "uploads");
+    await mkdir(uploadsDir, { recursive: true });
+
+    // Generate unique name
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const ext = file.name.split(".").pop() || "png";
+    const safeName = `${uniqueSuffix}.${ext}`;
+
+    const filePath = join(uploadsDir, safeName);
+    await writeFile(filePath, buffer);
+
+    // Return the relative URL of the uploaded image
+    return NextResponse.json({ url: `/uploads/${safeName}` });
+  } catch (error) {
+    console.error("Upload error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}
