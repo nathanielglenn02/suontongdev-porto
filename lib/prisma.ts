@@ -17,6 +17,8 @@ export const prisma =
             password: dbUrl.password,
             database: dbUrl.pathname.substring(1), // Menghapus tanda '/' di awal nama database
             ssl: { rejectUnauthorized: true },     // KUNCI UTAMA: Memaksa enkripsi SSL menyala!
+            connectTimeout: 10000,                 // Batas waktu pembuatan socket baru (10 detik)
+            acquireTimeout: 10000,                 // Batas waktu mengambil koneksi dari pool (10 detik)
         });
 
         // 3. Injeksi ke Prisma Client
