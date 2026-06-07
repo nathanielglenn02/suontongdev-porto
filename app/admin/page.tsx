@@ -1,6 +1,7 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
 import { FolderKanban, Code2, Eye } from "lucide-react";
+import { Project, Tech } from "@prisma/client";
 
 export default async function AdminDashboardPage() {
   const projectCount = await prisma.project.count();
@@ -19,14 +20,14 @@ export default async function AdminDashboardPage() {
 
   // Combine and sort (since Tech has no createdAt, we use a fallback timestamp order using id)
   const activities = [
-    ...recentProjects.map(p => ({
+    ...recentProjects.map((p: Project) => ({
       id: `p-${p.id}`,
       type: "project",
       name: p.title,
       timeLabel: "Proyek baru",
       order: p.id * 2, // Sort order
     })),
-    ...recentTech.map(t => ({
+    ...recentTech.map((t: Tech) => ({
       id: `t-${t.id}`,
       type: "tech",
       name: t.name,
