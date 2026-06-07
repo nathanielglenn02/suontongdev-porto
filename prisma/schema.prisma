@@ -1,22 +1,32 @@
 generator client {
   provider = "prisma-client-js"
-  engineType = "library"
 }
 
 datasource db {
   provider = "mysql"
+  
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String   @db.Text
-  imageUrl    String
-  githubUrl   String?  
-  liveUrl     String?  
-  techStack   String   
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           Int            @id @default(autoincrement())
+  title        String
+  description  String         @db.Text
+  thumbnailUrl String         // <-- Berubah dari imageUrl menjadi thumbnailUrl
+  githubUrl    String?  
+  liveUrl      String?  
+  techStack    String   
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  
+  images       ProjectImage[] // <-- Relasi One-to-Many ke tabel ProjectImage
+}
+
+// Tabel baru untuk menampung banyak gambar dalam satu proyek
+model ProjectImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  projectId Int
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
 model Tech {
