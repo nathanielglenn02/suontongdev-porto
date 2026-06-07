@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
-import { Plus, Edit, Trash2, X } from "lucide-react";
+import { Plus, Edit, Trash2, X, Code2 } from "lucide-react";
 import { createTech, updateTech, deleteTech } from "./actions";
 import { useActionState } from "react";
 import { iconMap } from "@/lib/icons";
