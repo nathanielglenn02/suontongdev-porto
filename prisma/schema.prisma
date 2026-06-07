@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  imageUrl    String
+  githubUrl   String?  
+  liveUrl     String?  
+  techStack   String   
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Tech {
+  id        Int      @id @default(autoincrement())
+  name      String
+  icon      String   
+}
