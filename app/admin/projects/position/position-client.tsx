@@ -134,8 +134,8 @@ export default function PositionClientPage({
         </div>
       </div>
 
-      {/* Projects Reorder List */}
-      <div className="space-y-3 max-w-4xl">
+      {/* Projects Reorder Grid (3 Columns) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => {
           const isDragging = draggedIndex === index;
           const techArray = project.techStack
@@ -150,64 +150,69 @@ export default function PositionClientPage({
               onDragStart={(e) => handleDragStart(e, index)}
               onDragOver={(e) => handleDragOver(e, index)}
               onDragEnd={handleDragEnd}
-              className={`flex items-center gap-4 p-4 rounded-xl border transition-all duration-200 cursor-grab active:cursor-grabbing select-none ${
+              className={`group relative rounded-3xl bg-slate-950/60 border overflow-hidden backdrop-blur-sm transition-all duration-300 cursor-grab active:cursor-grabbing flex flex-col select-none ${
                 isDragging
-                  ? "bg-slate-800/40 border-blue-500/50 border-dashed opacity-50 scale-[0.99]"
-                  : "bg-slate-900/60 hover:bg-slate-800/20 border-slate-800 hover:border-slate-700/80"
+                  ? "border-blue-500/50 bg-slate-800/40 border-dashed opacity-50 scale-[0.98]"
+                  : "border-slate-800 hover:border-slate-700/80 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.15)]"
               }`}
             >
-              {/* Grip Handle Indicator */}
-              <div className="text-slate-600 hover:text-slate-400 shrink-0">
-                <GripVertical size={20} />
-              </div>
-
-              {/* Number Badge */}
-              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-sm font-semibold text-slate-300 shrink-0 font-mono">
-                {index + 1}
-              </div>
-
-              {/* Thumbnail */}
-              <div className="w-16 h-12 rounded-lg overflow-hidden border border-slate-800 bg-slate-950 shrink-0 hidden sm:block">
+              {/* Image Container */}
+              <div className="relative h-44 overflow-hidden bg-slate-950 shrink-0">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10 opacity-70"></div>
                 <img
                   src={project.thumbnailUrl}
                   alt={project.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://placehold.co/150x100/1e293b/ffffff?text=Preview";
+                    (e.target as HTMLImageElement).src = "https://placehold.co/800x450/1e293b/ffffff?text=Preview";
                   }}
                 />
+                
+                {/* Number Badge */}
+                <div className="absolute top-3 left-3 z-20 w-8 h-8 rounded-lg bg-blue-600 border border-blue-500 flex items-center justify-center text-sm font-semibold text-white font-mono shadow-md">
+                  {index + 1}
+                </div>
+
+                {/* Grip Handle Indicator */}
+                <div className="absolute top-3 right-3 z-20 p-1.5 rounded-lg bg-slate-900/80 border border-slate-700/50 text-slate-400 group-hover:text-white backdrop-blur-sm shadow-md transition-colors">
+                  <GripVertical size={16} />
+                </div>
               </div>
 
-              {/* Project Info */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold text-white truncate">{project.title}</h3>
-                <p className="text-xs text-slate-500 truncate mt-0.5 hidden md:block">
-                  {project.description}
-                </p>
-              </div>
+              {/* Card Content */}
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2 truncate group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 text-xs line-clamp-2 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                </div>
 
-              {/* Tech Stack Badges */}
-              <div className="hidden lg:flex items-center gap-1.5 shrink-0 max-w-[30%] flex-wrap justify-end">
-                {techArray.slice(0, 3).map((techName) => (
-                  <span
-                    key={techName}
-                    className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400 text-[10px] font-medium"
-                  >
-                    {techName}
-                  </span>
-                ))}
-                {techArray.length > 3 && (
-                  <span className="text-[10px] text-slate-500 font-semibold font-mono">
-                    +{techArray.length - 3}
-                  </span>
-                )}
+                {/* Tech Stack tags */}
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/60 mt-auto">
+                  {techArray.slice(0, 3).map((techName) => (
+                    <span
+                      key={techName}
+                      className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700/50 text-slate-400 text-[10px] font-medium"
+                    >
+                      {techName}
+                    </span>
+                  ))}
+                  {techArray.length > 3 && (
+                    <span className="text-[10px] text-slate-500 font-semibold font-mono">
+                      +{techArray.length - 3}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           );
         })}
 
         {projects.length === 0 && (
-          <div className="text-center py-12 border border-dashed border-slate-800 rounded-2xl">
+          <div className="text-center py-12 border border-dashed border-slate-800 rounded-2xl col-span-full">
             <Sparkles className="mx-auto text-slate-600 mb-3" size={32} />
             <p className="text-slate-400 text-sm">Belum ada proyek yang dapat disusun.</p>
             <p className="text-slate-600 text-xs mt-1">
