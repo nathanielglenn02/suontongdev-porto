@@ -30,20 +30,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid data format" }, { status: 400 });
     }
 
-    // 3. Update order in database using transaction
-    // We update each project's order to match its index in the sorted list
-    const updates = ids.map((id, index) => 
-      prisma.project.update({
-        where: { id },
-        data: { order: index },
-      })
-    );
-
-    await prisma.$transaction(updates);
+    // 3. Update order in database sequentially to avoid transaction write conflicts/deadlocks in TiDB
+    for (let i = 0; i < ids.length; i++) {
+      await prisma.project.update({
+        where: { id: ids[i] },
+        data: { order: i },
+      });
+    }
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Reorder error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ error: error?.message || "Internal Server Error" }, { status: 500 });
   }
 }
