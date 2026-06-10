@@ -41,7 +41,7 @@ export default function ProjectSection({ projects }: { projects: ProjectItem[] }
         <div className="mb-20 text-center">
           <h2 className="text-4xl font-bold text-white mb-4">Karya Unggulan</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Beberapa proyek komersial dan personal terbaik yang pernah saya bangun dari nol hingga production.
+            Beberapa proyek komersial dan personal terbaik yang pernah saya kembangkan.
           </p>
         </div>
 
