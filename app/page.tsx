@@ -218,7 +218,7 @@ export default async function Home() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <h2 className="text-4xl font-bold text-white mb-6">Mari Ciptakan Sesuatu</h2>
             <p className="text-slate-400 mb-10 max-w-xl mx-auto text-lg">
-              Sedang merencanakan proyek baru atau butuh diskusi seputar arsitektur sistem? Kotak masuk saya selalu terbuka.
+              Sedang merencanakan proyek baru atau butuh diskusi seputar arsitektur sistem? Hubungi saya di <span className="text-white font-semibold">nathaniel.glenn21@gmail.com</span> atau klik tombol di bawah.
             </p>
             <a href="mailto:nathaniel.glenn21@gmail.com" className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 hover:scale-105 transition-all shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] mb-24">
               <Mail size={20} />
