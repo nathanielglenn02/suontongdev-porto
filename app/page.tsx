@@ -119,18 +119,18 @@ export default async function Home() {
 
             {/* Main Headline */}
             <h1 className="animate-fade-in-up delay-200 text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Merakit kode menjadi <br className="hidden md:block" />
+              Membangun Solusi Digital <br className="hidden md:block" />
               <span className="relative inline-block mt-2">
                 <span className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 blur-2xl opacity-20"></span>
                 <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
-                  solusi digital modern.
+                  Terintegrasi dengan Arsitektur Modern.
                 </span>
               </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="animate-fade-in-up delay-300 text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Saya seorang Software Engineer yang berfokus pada arsitektur backend, performa sistem, dan pengalaman pengguna yang seamless.
+            <p className="animate-fade-in-up delay-300 text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Saya seorang Software Engineer yang ahli dalam pengembangan full-stack web dan aplikasi mobile. Berfokus pada perancangan sistem berskala enterprise dan integrasi API yang solid menggunakan ekosistem modern seperti NestJS, Next.js, dan Laravel.
             </p>
 
             {/* CTA Buttons */}
