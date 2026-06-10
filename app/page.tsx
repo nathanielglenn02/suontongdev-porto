@@ -212,7 +212,7 @@ export default async function Home() {
             <p className="text-slate-400 mb-10 max-w-xl mx-auto text-lg">
               Sedang merencanakan proyek baru atau butuh diskusi seputar arsitektur sistem? Kotak masuk saya selalu terbuka.
             </p>
-            <a href="mailto:halo@suontongdev.com" className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 hover:scale-105 transition-all shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] mb-24">
+            <a href="mailto:nathaniel.glenn21@gmail.com" className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 hover:scale-105 transition-all shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] mb-24">
               <Mail size={20} />
               Kirim Pesan
             </a>
