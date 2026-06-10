@@ -9,7 +9,8 @@ import {
   Code2, 
   LogOut, 
   Menu, 
-  X 
+  X,
+  ArrowUpDown
 } from "lucide-react";
 import { logoutAdmin } from "../login/actions";
 
@@ -20,6 +21,7 @@ export default function AdminSidebar() {
   const navItems = [
     { href: "/admin", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
     { href: "/admin/projects", label: "Kelola Proyek", icon: <FolderKanban size={20} /> },
+    { href: "/admin/projects/position", label: "Kelola Posisi Proyek", icon: <ArrowUpDown size={20} /> },
     { href: "/admin/tech", label: "Kelola Tech Stack", icon: <Code2 size={20} /> },
   ];
 

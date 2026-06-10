@@ -24,7 +24,10 @@ export default async function Home() {
         orderBy: { id: "asc" },
       },
     },
-    orderBy: { id: "desc" },
+    orderBy: [
+      { order: "asc" },
+      { id: "desc" },
+    ],
   });
 
   return (
