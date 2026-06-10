@@ -6,7 +6,7 @@ import {
   Sparkles,
   Rocket
 } from 'lucide-react';
-import { Github, Linkedin } from "@/app/components/custom-icons";
+import { Github, Linkedin, Instagram } from "@/app/components/custom-icons";
 import { prisma } from "@/lib/prisma";
 import { iconMap } from "@/lib/icons";
 import ProjectSection from "./components/project-section";
@@ -109,12 +109,20 @@ export default async function Home() {
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
 
             {/* Status Badge */}
-            <div className="animate-fade-in-up delay-100 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-300 text-sm font-medium mb-8 backdrop-blur-sm">
+            <div className="animate-fade-in-up delay-100 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-300 text-sm font-medium mb-6 backdrop-blur-sm">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
               </span>
               Tersedia untuk proyek baru
+            </div>
+
+            {/* Name Introduction */}
+            <div className="animate-fade-in-up delay-150 mb-4 text-center">
+              <span className="text-blue-500 font-semibold uppercase tracking-widest text-xs">PORTFOLIO OF</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mt-1">
+                Nathaniel Glenn Hanson
+              </h2>
             </div>
 
             {/* Main Headline */}
@@ -130,7 +138,7 @@ export default async function Home() {
 
             {/* Sub-headline */}
             <p className="animate-fade-in-up delay-300 text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Saya seorang Software Engineer yang ahli dalam pengembangan full-stack web dan aplikasi mobile. Berfokus pada perancangan sistem berskala enterprise dan integrasi API yang solid menggunakan ekosistem modern seperti NestJS, Next.js, dan Laravel.
+              Saya, <span className="text-white font-semibold">Nathaniel Glenn Hanson</span>, adalah seorang Software Engineer yang ahli dalam pengembangan full-stack web dan aplikasi mobile. Berfokus pada perancangan sistem berskala enterprise dan integrasi API yang solid menggunakan ekosistem modern seperti NestJS, Next.js, dan Laravel.
             </p>
 
             {/* CTA Buttons */}
@@ -140,7 +148,7 @@ export default async function Home() {
                 <Rocket size={20} className="relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 <span className="relative z-10">Jelajahi Proyek</span>
               </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-all border border-white/10 flex items-center gap-2 w-full sm:w-auto justify-center backdrop-blur-sm">
+              <a href="https://github.com/nathanielglenn02" target="_blank" rel="noreferrer" className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-all border border-white/10 flex items-center gap-2 w-full sm:w-auto justify-center backdrop-blur-sm">
                 <Github size={20} />
                 Lihat GitHub
               </a>
@@ -221,8 +229,9 @@ export default async function Home() {
               <p>&copy; {new Date().getFullYear()} SuontongDev. All rights reserved.</p>
               <div className="flex items-center gap-6 mt-4 md:mt-0">
                 <div className="flex items-center gap-1"><MapPin size={16} /> Surabaya, ID</div>
-                <a href="https://www.linkedin.com/in/nathanielglenn02/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"><Linkedin size={18} /></a>
-                <a href="https://github.com/nathanielglenn02" target="_blank" rel="noreferrer" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"><Github size={18} /></a>
+                <a href="https://www.linkedin.com/in/nathanielglenn02/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5" title="LinkedIn"><Linkedin size={18} /></a>
+                <a href="https://github.com/nathanielglenn02" target="_blank" rel="noreferrer" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5" title="GitHub"><Github size={18} /></a>
+                <a href="https://www.instagram.com/nathanielglenn02/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5" title="Instagram"><Instagram size={18} /></a>
               </div>
             </div>
           </div>
