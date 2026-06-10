@@ -11,8 +11,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Hybrid upload: If BLOB_READ_WRITE_TOKEN is defined, use Vercel Blob (useful for Vercel Serverless environment)
-    if (process.env.BLOB_READ_WRITE_TOKEN) {
+    // Hybrid upload: Use Vercel Blob if running on Vercel (which uses OIDC) or if token/store variables are defined.
+    if (process.env.BLOB_READ_WRITE_TOKEN || process.env.VERCEL || process.env.BLOB_STORE_ID) {
       const { put } = await import("@vercel/blob");
       const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
       const ext = file.name.split(".").pop() || "png";
